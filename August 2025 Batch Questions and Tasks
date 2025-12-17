@@ -1,1 +1,1229 @@
-August 2025 Batch Questions and Tasks
+Questions for last session to test your understanding
+
+Client vs Server OS – What is the main difference between a client OS and a server OS?
+Client OS – Give one example of a client operating system.
+Server OS – Give one example of a server operating system.
+Data Center – What is a data center used for?
+Racks – In a data center, what is the purpose of racks?
+Virtualization – What is virtualization in simple terms?
+Hypervisor – What is the role of a hypervisor in virtualization?
+VM vs Physical Server – What is one key difference between a virtual machine and a physical server?
+
+
+Interview Questions
+
+Session 3 and 4
+What is cloud?
+Types of cloud (Deployment models) and their definition?
+Types of Services (Service Model)?
+What is Azure Geography?
+What is Azure region and how many are there?
+Explain HA - High Availability?
+Explain Datacentre, availability zone, and availability Set?
+What is Fault Domain and Update Domain?
+Three-Tier Application – What are the three tiers in a three-tier application architecture?
+Three-Tier Example – Which tier of a three-tier app usually handles the database?
+
+
+Session 5 and 6
+
+What is RBAC/IAM role?
+Please name a few RBAC/IAM roles?
+What are the scopes of RBAC?
+Name a few MS Entra ID/Azure AD roles?
+Being Just a global admin can a user create a resource group in a subscription?
+A user has owner access on subscription level with no role in Azure AD, can that user reset password for some other user?
+How many methods are there to create users in MS Entra ID?
+Which option can be used for bulk user creation?
+How can I add my company's name/domain in MS Entra ID?
+
+
+
+
+Tasks
+
+User Management
+	• Create a new user manually in MS Entra ID.
+	• Reset the password of the created user.
+	• Assign a role (e.g., User Administrator) to that user.
+	• Delete or disable a user and verify changes.
+Group Management
+	• Create a security group (e.g., "HR-Team").
+	• Add a few users to the group.
+	• Assign a role to the group instead of individual users.
+	• Remove a user from the group and verify access.
+Role Assignments
+	• Check who the Global Administrators are in the tenant.
+	• Assign another admin role (e.g., Application Administrator) to a user.
+	• Remove the role and observe the difference.
+	• Delete Users and groups created by you.
+
+
+Session 7 and 8
+• How can I check the status of an Azure virtual machine?
+• What does it mean when an Azure virtual machine is in the "Running" state?
+• What is the significance of the "Stopped" state for an Azure virtual machine?
+• What is the difference between "Stopped (Deallocated)" and "Stopped (Stopped)" for an Azure VM?
+• Can we change a machine size without any downtime?
+• What all resources get created automatically when we deploy an Azure virtual machine?
+• What is the default size of OS disk you get while deploying a Windows machine?
+• Which Azure service can I use to enforce size restrictions and make tags mandatory?
+
+
+Task#1:
+Follow the instructions below to create a Virtual Machine (VM) in Azure based on the provided configuration.
+
+1. Subscription: Select your respective subscription.
+	1. Resource Group: Use your assigned resource group.
+	2. Virtual Machine Name: Name it as yourname-vmw001 (e.g., suhail-vmw001).
+	3. Region: East US 2 (if unavailable, choose any other region).
+	4. Operating System: Windows Server 2016
+	5. Availability Options: No Redundancy 
+	6. Security Type: Standard.
+	7. Authentication type: Password
+Machine Configuration:
+	• VM Size: B1s or smaller (Free Tier) or B1ms (Select any other only if given sizes are unavailable).
+	• Username: tapout
+	• Password: Sunday@Aug@2025
+Storage:
+	• Keep all settings as default.
+	
+Networking:
+	• Keep all settings as default.
+
+Inbound Port allowed:  80, 443, 3389
+
+Monitoring: Disable
+
+Advanced Settings:
+	• Enable Auto Shutdown: Yes, set to 6 PM IST (without notification).
+	• Below script should run while deploying the machine
+		netsh advfirewall set allprofiles state off
+
+
+Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	1
+
+Important Instructions:
+ ⚠️ If you face CPU quota or public IP errors, wait for others to delete their VMs before retrying.
+🗑️ Once I check your VM, delete the machine and all related resources from your resource group ASAP to allow others to complete their tasks.
+
+
+
+GUI - Graphical User Int
+All of tasks ccan be CHIVED using CLI
+CLI  - Command line
+
+
+
+Session 9 & 10
+
+
+• What type of information can you find in Azure Virtual Machine Activity Logs?
+• In what scenarios would you use Activity Logs for troubleshooting VM issues?
+• What are some reasons to change the size of an Azure Virtual Machine?
+• What are the prerequisites before resizing a VM?
+• Can you resize a VM with Premium SSDs to a size that doesn’t support Premium storage? Why or why not?
+
+• How can you reset an admin password for a VM in Azure?
+• What does the Reapply option do for a VM?
+• When should you use the Redeploy option, and what happens to the VM’s underlying host during this process?
+• What’s the difference between Reapply and Redeploy in Azure?
+
+• What is the Run Command option in Azure VMs and when would you use it?
+• How does Run Command differ from connecting directly via RDP or SSH?
+• Can Run Command be executed on a VM that is not responding to RDP/SSH? Why?
+
+• How do you connect to a Linux VM ?
+• What is the difference between using SSH keys and username/password for Linux VM login?
+
+• What are perquisite of Bastion?
+• Which tiers are available in Bastion and difference among them?
+• What is Azure Bastion and how does it improve VM security?
+• What ports does Bastion eliminate the need to open on the VM?
+• What are some common issues that Bastion helps to solve compared to traditional RDP/SSH access?
+
+Task 2: VM Activity Logs
+	• Navigate to the Activity Logs for a VM.
+	• Filter logs to see only Error events for the last 24 hours.
+	• Export the log as a .csv file.
+	• Identify the operation that failed most recently if any.
+	• Share screenshot.
+
+Task 3: VM Resize
+	• Resize an existing VM from a Standard_B2s size to a Standard_D2s_v3 size (from any size to any size is okay).
+	• Validate the change by checking the VM’s new configuration.
+	• Record the downtime (if any) experienced during resize.
+	
+Task 4: Password Reset, Reapply, Redeploy
+	• Reset the admin password for a VM using the Reset Password blade.
+	• Use the Reapply option to apply VM extensions again.
+	• Use the Redeploy option on the VM and confirm the host changed (public IP should remain the same, but the underlying host will be refreshed).
+
+
+Task 5: Connect with Run Command
+	• Use the Run Command feature to run:
+		○ hostname and net useron a Windows VM
+	• Verify the command output from the portal without using RDP/SSH.
+	
+Task 6: Linux VM Connectivity
+	• Create a Linux VM with username authentication.
+	• Attempt login using both SSH keys and username/password.
+	• 
+Task 7: Bastion Deployment (Standard Tier with Features)
+	• Create a Bastion Host in Standard Tier.
+	• Select any Zone out of 3 but only one zone
+	• Enable the following features during setup:
+		○ Kerberos Authentication
+		○ Copy & Paste 
+		○ IP-based connection 
+		○ Shareable Link 
+	• Connect to a VM using Bastion 
+	• Generate a shareable link for another user to access the VM.
+	• Share screenshots and sharable link in the group
+
+
+Session 11 & 12
+
+• What is an Availability Set in Azure and why is it important?
+• What is the difference between a Fault Domain (FD) and an Update Domain (UD)?
+• How does Azure ensure high availability of VMs inside an Availability Set?
+• Can you add an existing VM to an Availability Set? 
+• What type of SLA does Azure provide when you deploy VMs in an Availability Set?
+• In what scenarios would you prefer using Availability Set over Availability Zone?
+• What are Availability Zones (AZs) and how are they different from Availability Sets?
+• How does deploying across multiple Availability Zones improve resiliency?
+• What is a Virtual Machine Scale Set (VMSS) and what problem does it solve?
+• How does VMSS differ from a regular Availability Set or Availability Zone deployment?
+• What are the two orchestration modes available for VMSS, and how are they different?
+• Can you use custom images in a VMSS deployment? If yes, how?
+• How does Autoscaling work in VMSS and what metrics can trigger scaling?
+• What are some common scenarios where VMSS is used in real-world solutions?
+• How does VMSS ensure high availability and fault tolerance?
+
+
+Task#9: Create Virtual Machines in an Availability Set
+Follow the instructions below to create two Virtual Machines (VMs) in Azure inside an Availability Set.
+	1. Subscription: Select your respective subscription.
+	2. Resource Group: Use your assigned resource group.
+	3. Availability Set:
+		○ Create a new Availability Set named yourname-avset001.
+		○ Configure it with 2 Fault Domains and 3 Update Domains.
+	4. Virtual Machine Configuration:
+		○ VM1 Name: yourname-vmw001
+		○ VM2 Name: yourname-vmw002
+		○ Region: East US 2 (if unavailable, choose any other region).
+		○ Operating System: Windows Server 2019.
+		○ Availability Options: Select Availability Set and choose yourname-avset001.
+		○ Security Type: Standard.
+		○ Authentication Type: Password.
+		○ Username: tapout
+		○ Password: Sunday@Aug@2025
+		○ VM Size: B1s or B1ms (Free Tier if available).
+	5. Storage: Keep default settings.
+	6. Networking: Keep default settings.
+	7. Inbound Ports Allowed: 80, 443, 3389.
+	8. Monitoring: Disable.
+	9. Advanced Settings:
+		○ Enable Auto Shutdown: Yes, set to 6 PM IST (without notification).
+
+
+Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	9
+
+
+
+
+
+Task#10: Create Virtual Machines in Availability Zones
+Follow the instructions below to create three Virtual Machines (VMs) in different Availability Zones.
+	1. Subscription: Select your respective subscription.
+	2. Resource Group: Use your assigned resource group.
+	3. Virtual Machine Configuration:
+		○ VM1 Name: yourname-vmw001 (Zone 1)
+		○ VM2 Name: yourname-vmw002 (Zone 2)
+		○ VM3 Name: yourname-vmw003 (Zone 3)
+		○ Region: East US 2 (must support Availability Zones).
+		○ Operating System: Windows Server 2019.
+		○ Availability Options: Select Availability Zone, assign each VM to a different zone (Zone 1, Zone 2, Zone 3).
+		○ Security Type: Standard.
+		○ Authentication Type: Password.
+		○ Username: tapout
+		○ Password: Sunday@Aug@2025
+		○ VM Size: B1s or B1ms.
+	4. Storage: Keep default settings.
+	5. Networking: Keep default settings.
+	6. Inbound Ports Allowed: 80, 443, 3389.
+	7. Monitoring: Disable.
+	8. Advanced Settings:
+		○ Enable Auto Shutdown: Yes, set to 6 PM IST (without notification).
+		○ Run the following script during deployment:
+Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	10
+
+
+
+Session 13 & 14
+• How do you connect to Azure from PowerShell? (Connect-AzAccount)
+• What is the command to create a new Resource Group in PowerShell?
+• How do you list all VMs in a subscription using PowerShell?
+• How can you start or stop a VM using PowerShell?
+• What’s the difference between Get-AzVM and Get-AzVM -Status?
+• How can you use PowerShell to assign a Public IP to a VM?
+• How do you deploy an ARM template using PowerShell?
+• What is the cmdlet to check your current Azure subscription context?
+
+
+ 
+Task#11: Create a Virtual Machine Scale Set (VMSS)
+Follow the instructions below to create a Virtual Machine Scale Set with autoscaling configuration.
+	1. Subscription: Select your respective subscription.
+	2. Resource Group: Use your assigned resource group.
+	3. Virtual Machine Scale Set Configuration:
+		○ Name: yourname-vmss001
+		○ Region: East US
+		○ Operating System: Windows Server 2019
+		○ Security Type: Standard
+		○ Authentication Type: Password
+		○ Username: tapout
+		○ Password: Sunday@Aug@2025
+		○ VM Size: B1s or B1ms
+		○ Availability Zone: Select Zone Redundant (distribute instances across 2 zones)
+	4. Storage: Keep default settings.
+	5. Networking:
+		○ Virtual Network: Use the assigned VNet/Subnet
+		○ Load Balancer: None
+		○ Inbound Ports Allowed: 80, 443, 3389
+	6. Scaling Configuration:
+		○ Default instance count: 2
+		○ Instance limits:
+			§ Minimum = 1
+			§ Maximum = 6
+		○ Scale Out Rule: If average CPU > 80%, add 2 instance
+		○ Scale In Rule: If average CPU < 20%, remove 1 instance
+	7. Monitoring: Disable.
+	8. Advanced Settings:
+		○ Enable Auto Shutdown: Yes, set to 6 PM IST (without notification)
+		○ Startup script: (provide if required, otherwise skip)
+Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	11
+
+Task#12: Create a Virtual Machine using PowerShell
+Creating a VM using PowerShell in Azure Portal- 
+Create a VM    use your own resource group etc        
+
+In the below script 
+replace myResourceGroup with your resource group name
+replace myVM with your Virtual Machine name
+Location - Use any
+replace myVnet with your Virtual Network name (Similar to VM name)
+  
+      
+New-AzVm `
+  -ResourceGroupName 'myResourceGroup' `
+  -Name 'myVM' `
+  -Location 'East US' `
+  -VirtualNetworkName 'myVnet' `
+  -SubnetName 'mySubnet' `
+  -SecurityGroupName 'myNetworkSecurityGroup' `
+  -PublicIpAddressName 'myPublicIpAddress' `
+  -OpenPorts 80,3389 `
+  -Size 'Standard_B1s'
+
+
+
+Using Windows PS windows- 
+
+
+Check version -                 $PSVersionTable  (should be 5 above)
+
+Install Azure module-      Install-Module AzureAD
+				  Install-Module -Name Az -AllowClobber -Scope allusers
+				
+Set remote execution-    Set-ExecutionPolicy -Executionpolicy RemoteSigned -Force
+
+Connect to MS Azure-     Connect-AzAccount or az login
+
+
+======================================
+
+
+Session 15 & 16
+
+What is an Azure lock, and why are they used?
+What are the two types of locks available in Azure, and how do they differ in their functionality?
+How can you apply a lock to a resource in Azure, and what permissions are required to do so?
+Explain a scenario where you would use a "CanNotDelete" lock on an Azure resource.
+When might you want to use a "ReadOnly" lock on an Azure resource? Provide an example.
+How can you remove a lock from a resource in Azure?
+What happens if you apply a "Delete" lock to a resource group? How does it affect the resources within that group?
+
+
+Task#13:
+
+Azure Virtual Machine Deployment Task
+	1. Subscription: Select your respective subscription.
+	2. Resource Group: Use your assigned resource group.
+	3. Virtual Machine Name: Name it as yourname-vmw001 (e.g., suhail-vmw001).
+	4. Region: East US 2 (if unavailable, choose any other region).
+	5. Operating System: Windows Server 2019.
+	6. Availability Options: No Redundancy.
+	7. Security Type: Standard.
+	8. Authentication Type: Password.
+
+Machine Configuration
+	• VM Size: B1s or smaller (Free Tier) or B1ms (select any suitable size for practical).
+	• Username: tapout
+	• Password: Sunday@Aug@2025
+
+Storage (Disk Section)
+	• OS Disk Type: Standard HDD.
+	• OS Disk Encryption: Enabled with platform-managed keys.
+	• OS Disk Size: 256 GiB
+	
+	• Data Disks: 
+	• Disk 1 - 20 GiB, Standard HDD
+	• Disk 2 - 100 GiB Standard HDD, Shareable
+	
+
+Networking
+	• Keep all settings as default.
+Inbound Ports Allowed: 80, 443, 3389
+
+Monitoring
+	• Disable all monitoring options.
+
+Advanced Settings
+	• Enable Auto Shutdown: Yes, set to 6 PM IST (without notification).
+	• Custom Script Extension (Run at Deployment):
+netsh advfirewall set allprofiles state off
+
+
+Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	13
+
+
+=================================================================
+
+Session 17 & 18
+
+
+           What is an Azure Managed Identity, and why is it used?
+	What are the two types of Managed Identities available in Azure, and how do they differ in their creation and lifecycle?
+	How can you enable a Managed Identity for an Azure resource, and what permissions are needed to assign roles to it?
+	Explain a scenario where you would use a System-assigned Managed Identity instead of a user-assigned one.
+	When might you prefer a User-assigned Managed Identity? Provide an example scenario.
+	What happens to the Managed Identity when the associated resource (e.g., VM) is deleted?
+
+	What is Azure Key Vault, and why is it used in cloud environments?
+	What are the main components of a Key Vault, and what types of secrets can it store?
+	How can you control access to a Key Vault using Azure RBAC and Access Policies?
+	Explain a scenario where you would integrate Azure Key Vault with an application using Managed Identity.
+	What happens if a Key Vault is deleted? How can you recover it using soft delete and purge protection?
+	What are limitation/condition when it comes to backup and restore in KyVault
+
+	What is Azure Disk Encryption (ADE), and why is it used?
+	What are the two main encryption key models supported by Azure Disk Encryption? Explain how they differ.
+	How can you enable disk encryption on a Virtual Machine using Azure Portal or PowerShell?
+	What are Customer Managed Keys (CMK) and Microsoft Managed Keys (MMK).
+	Which component will you use to get access on key vault for Disk encryption
+	What happens if the Key Vault or key used for encryption is deleted or disabled? How does it affect the encrypted disks?
+
+
+Task#14:
+
+
+2. Subscription: Select your respective subscription.
+	1. Resource Group: Use your assigned resource group.
+	2. Virtual Machine Name: Name it as yourname-vmw001 (e.g., suhail-vmw001).
+	3. Region: East US 2 (if unavailable, choose any other region).
+	4. Operating System: Windows Server 2019
+	5. Availability Options: No Redundancy 
+	6. Security Type: Standard.
+	7. Authentication type: Password
+Machine Configuration:
+	• VM Size: B1s or smaller (Free Tier) or B1ms (Select any other only if given sizes are unavailable or not suitable for the practical).
+	• Username: tapout
+	• Password: Sunday@Aug@2025
+Storage:
+	• Two Disks
+	1. With Default Encryption 50 GB
+	1- CMK Encryption 80 GB
+	
+Networking:
+	• Keep all settings as default.
+
+Inbound Port allowed:  80, 443, 3389
+
+Monitoring: Disable
+
+Advanced Settings:
+	• Enable Auto Shutdown: Yes, set to 6 PM IST (without notification).
+	• Below script should run while deploying the machine
+		netsh advfirewall set allprofiles state off
+
+
+Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	14
+
+
+
+Session 19 & 20
+
+ 1. Can resources with private IPs communicate with public IPs?
+ 2. Can resources with Public IP communicate with Public IP?
+ 3. Can resources within the same VNET and the same subnet communicate with each other on private IP?
+ 4. Can resources within the same VNET and different subnets communicate with each other on private IPs?
+ 5. Can resources within the different VNETs communicate with each other on private IPs?
+
+
+Task#15:
+
+Create a VNet with two subnets, deploy two VMs (one per subnet), and ping between them
+1) Basics
+	1. Subscription: Select your respective subscription.
+	2. Resource Group: Use your assigned resource group.
+	3. Region: East US 2 (if unavailable, choose any other region).
+2) Virtual Network
+	1. VNet Name: yourname-vnet001 (e.g., suhail-vnet001)
+	2. Address Space: 10.20.0.0/16 (choose any if you are comfortable with other range)
+3) Subnets
+Create two subnets in the VNet:
+	1. Subnet A
+		○ Name: subnet-a
+		○ Address Prefix: 10.20.10.0/24
+	2. Subnet B
+		○ Name: subnet-b
+		○ Address Prefix: 10.20.20.0/24
+Create two VMs
+Ping them using private Ips
+
+Machine Configuration:
+	• VM Size: B1s or smaller (Free Tier) or B1ms (Select any other only if given sizes are unavailable or not suitable for the practical).
+	• Username: tapout
+	• Password: Sunday@Aug@2025
+Storage:
+	• Disks
+	1. With Default Encryption 50 GB
+	
+
+
+Inbound Port allowed:  80, 443, 3389
+
+Monitoring: Disable
+
+Advanced Settings:
+	• Enable Auto Shutdown: Yes, set to 6 PM IST (without notification).
+	• Below script should run while deploying the machine
+		netsh advfirewall set allprofiles state off
+
+
+Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	15
+
+
+
+	
+		
+Session 21 & 22
+
+ 
+What is VNet peering, and why would you use it in Azure networking?
+Can VNets in different Azure regions be peered together? 
+What are the limitations or considerations when setting up VNet peering?
+What is an NSG? 
+What is an ASG?
+What are the default rules in an NSG?
+Scope of NSG?
+Can I apply same NSG on multiple resources?
+Can I apply multiple NSGs on same resource?
+I have an NSG on server blocking the internet and NSG on subnet allowing the internet, will my internet work on that VM?
+What is a route table?
+What is the difference between NSG and Azure firewall?
+Can I remove the default rules?
+
+ 
+Task#16:
+Subnet & VNet Peering Practical 
+
+Create two separate VNets (VNet-A and VNet-B) in the same or different region, create subnets and VMs in each VNet, peer the VNets, and demonstrate cross-VNet connectivity (ping using private IPs). 
+
+	
+	Environment
+		1. Subscription: Use your assigned subscription.
+		2. Resource Group: Use assigned resource group (e.g., rg-yourname-lab16).
+		3. Region: East US 2 (if unavailable pick another region and note it).
+	
+	Networking Plan - Names & addressing (feel free to choose any address space)
+		• VNet A
+			○ Name: yourname-vnetA-001 (example suhail-vnetA-001)
+			○ Address space: 10.10.0.0/16
+			○ Subnets:
+				§ subnet-a1 — 10.10.10.0/24
+				§ subnet-a2 — 10.10.11.0/24
+		• VNet B
+			○ Name: yourname-vnetB-001 (example suhail-vnetB-001)
+			○ Address space: 192.168.0.0/16
+			○ Subnets:
+				§ subnet-b1 — 192.168.10.0/24
+				§ subnet-b2 — 192.168.11.0/24
+	
+	Virtual Machines
+	Create 1 VM in each VNet (one per subnet for basic subnet understanding).
+		• VM Naming & placement
+			○ vm-a1 → VNet A → subnet-a1
+		
+			○ vm-b1 → VNet B → subnet-b1
+			
+		• Machine configuration (default for all VMs)
+			○ VM Size: B1s (or B1ms if B1s unavailable)
+			○ OS: Windows Server (match your lab needs)
+			○ Username: tapout
+			○ Password: Sunday@Aug@2025
+			○ Disk: 50 GB managed disk, default encryption
+			○ Inbound ports allowed: 80, 443, 3389 (open only if needed for lab; otherwise restrict)
+			○ Monitoring: Disabled
+			○ Auto-shutdown: Enabled at 6:00 PM IST (no notification)
+			○ Custom script to run at provisioning (VM cloud-init/CustomScript extension for Windows):
+	Tags:
+		• Name	Value
+		Owner	Your Name
+		Env	Test
+		Created Date	dd/mm/yyyy
+		OS	Windows
+		Task#	16
+	
+	
+	Session 23 & 24
+	
+	What is a User-Defined Route (UDR) in Azure?
+	How are User-Defined Routes different from system routes in Azure?
+	What is the purpose of a Route Table in Azure?
+	How do you associate a User-Defined Route with a subnet?
+	Can you have multiple User-Defined Routes in a single Route Table?
+	When might you use User-Defined Routes in an Azure virtual network?
+	What's the difference between a default Route Table and a custom (user-defined) Route Table?
+	How can you override the default system routes in Azure using UDRs?
+	In what scenarios might you route traffic through a User-Defined Route?
+	How do you configure and manage User-Defined Routes and Route Tables in Azure?
+	
+	
+	Task#17:
+	
+	
+		1. Subscription: Select your respective subscription.
+		2. Resource Group: Use your assigned resource group.
+		3. Virtual Machine Name: Name it as yourname-vmw001 (e.g., suhail-vmw001).
+		4. Region: East US 2 (if unavailable, choose any other region).
+		5. Operating System: Windows Server 2019.
+		6. Availability Options: No Redundancy.
+		7. Security Type: Standard.
+		8. Authentication Type: Password.
+	
+	Machine Configuration
+		• VM Size: B1s or smaller (Free Tier) or B1ms (select any suitable size for practical).
+		• Username: tapout
+		• Password: Sunday@Aug@2025
+	
+	Storage (Disk Section)
+		• OS Disk Type: Standard HDD.
+		• OS Disk Encryption: Enabled with platform-managed keys.
+		• OS Disk Size: 256 GiB
+		
+		• Data Disks: 
+		• Disk 1 - 20 GiB, Standard HDD
+		
+		
+	
+	Networking
+		• VM Should have Two NIC  (NIC1 and NIC2)
+		• Each NIC with two IPs 
+		• Total= 4 Private and 2 Public IP (Public IP names should be on your name, example- suhail-pip1 & suhail-pip2)
+		• 2 private Ips should be static and two should be Dynamic
+		• Each NIC should have different NSG
+		• NSG1-	Inbound
+		Associate with NIC1	Rule Name
+			Priority
+			Port
+			Protocol/Service
+			Source
+			Destination
+			Action
+			Description
+			allow-http
+			100
+			80
+			TCP/http
+			Any
+			Any
+			Allow
+			Allow inbound web traffic
+			allow-ssh-admin
+			200
+			22
+			TCP/ssh
+			Your Public IP
+			Any
+			Allow
+			Allow SSH from admin IP (your Public IP)
+			deny-rdp
+			300
+			3389
+			TCP/RDP
+			Any
+			Any
+			Deny
+			Block RDP access
+			
+			Outbound
+			Rule Name
+			Priority
+			Port
+			Protocol/Service
+			Source
+			Destination
+			Action
+			Description
+			allow-dns
+			100
+			53
+			UDP/DNS
+			Any
+			Any
+			Allow
+			Allow DNS resolution
+			allow-web-out
+			200
+			443
+			TCP/HTTPS
+			Any
+			Internet
+			Allow
+			Allow secure web traffic
+			deny-smb-out
+			300
+			445
+			TCP/Custom
+			Any
+			Any
+			Deny
+			Block SMB traffic outbound
+			
+		NSG2-	Inbound
+		Associate with NIC2	
+			Rule Name
+			Priority
+			Port
+			Protocol/Service
+			Source
+			Destination
+			Action
+			Description
+			allow-https
+			100
+			443
+			TCP/HTTPS
+			Any
+			Any
+			Allow
+			Allow inbound secure web traffic
+			allow-custom-app
+			200
+			8080
+			TCP/Custom
+			VirtualNetwork
+			Any
+			Allow
+			Allow app traffic within the VNet
+			deny-all-inbound
+			400
+			Any
+			Any/Custom
+			Any
+			Any
+			Deny
+			Block all other inbound connections
+			
+			Outbound
+			Rule Name
+			Priority
+			Port
+			Protocol/Service
+			Source
+			Destination
+			Action
+			Description
+			allow-ping-out
+			100
+			Any
+			ICMP/Custom
+			Any
+			Internet
+			Allow
+			Allow outbound ping (ICMP)
+			allow-sql-out
+			200
+			1433
+			TCP/MSSQL
+			Any
+			Any
+			Allow
+			Allow outbound SQL Server connections
+			deny-web-out
+			300
+			80
+			TCP/HTTP
+			Any
+			Internet
+			Deny
+			Block outbound HTTP traffic
+			
+		
+	
+	
+	Monitoring
+		• Disable all monitoring options.
+	
+	Locks
+		• Put "Read Only" lock on VM only
+	
+	
+	Advanced Settings
+		• Enable Auto Shutdown: Yes, set to 6 PM IST (without notification).
+		• Custom Script Extension (Run at Deployment):
+	netsh advfirewall set allprofiles state off
+	
+	
+	Tags:
+	• Name	Value
+	Owner	Your Name
+	Env	Test
+	Created Date	dd/mm/yyyy
+	OS	Windows
+	Task#	17
+
+	Share  Topology
+	
+	
+			○ Name: rt-yourname
+			○ Resource Group: Your resource group
+			○ Location: Same as your above VM's virtual network
+			○ Disable “Propagate gateway routes”: No 
+		1. Add a Custom Route
+			○ Route Name: send-to-VNET
+			○ Destination type: IP Address
+			○ Destination IP addresses/CIDR ranges: 0.0.0.0/0
+			○ Next Hop Type: Virtual Network
+		2. Associate the Route Table
+			○ Associate Route Table with your subnet of your above VM.
+			
+			
+			
+			
+Session 25 & 26
+
+VPN (Virtual Private Network):
+	1- What is a Virtual Private Network (VPN), and how does it contribute to secure communication in Azure?
+	2- What types of VPN solutions are available in Azure, and when would you choose one over the other? (S2S, P2S, VNET-VNET  VPN)
+	3- What are the steps involved in setting up a Site-to-Site VPN connection in Azure?
+	4- What is the role of Virtual Network Gateway in Azure VPN configurations?
+	• What is a VNet-to-VNet VPN, and how is it different from VNet Peering?
+	• What are the prerequisites for creating a VNet-to-VNet VPN connection?
+	• Why must both VNets have a GatewaySubnet for VNet-to-VNet connections?
+	• How do you verify successful communication between VNets in a VNet-to-VNet VPN configuration?
+	• What is a Local Network Gateway, and why is it needed for Site-to-Site VPN?
+	• Describe the end-to-end steps to configure a Site-to-Site VPN connection between Azure and an on-premises device. 
+		○ Answer - (Typical devices which we see at on-prem -  Cisco ASA / Cisco IOS routers, Fortinet FortiGate, Palo Alto Networks firewalls, Windows Server RRAS etc)
+	• What is the significance of the shared key during S2S VPN setup?
+	• What is a Point-to-Site VPN, and when is it preferred over Site-to-Site?
+	• What authentication methods are supported for P2S VPN ? Briefly explain each. (Certificate, Azure AD, RADIUS)
+	• What client software is needed for a user to connect using P2S VPN?
+	• Why does a P2S VPN require a unique client address pool while configuring the gateway?
+	• Your Site-to-Site VPN shows "Not Connected" in Azure. List possible causes and how you would troubleshoot the issue.
+	• A company wants to connect three branch offices and one Azure VNet using VPN. What Azure VPN topology should they use and why?
+	• An organization wants to grant temporary access to developers working remotely without exposing public IPs. Which VPN option should they use and why?
+	
+
+Task#18:
+
+1: VNet-to-VNet VPN
+Deploy Two VNets and Connect Them
+Create a VNet-to-VNet VPN using Azure VPN Gateways.
+Steps:
+	1. Create VNet1 (10.1.0.0/16) with a GatewaySubnet.
+	2. Create VNet2 (10.2.0.0/16) with a GatewaySubnet.
+	3. Deploy a VPN Gateway in each VNet 
+	4. Create VNet-to-VNet connection between both gateways.
+	5. Verify connectivity using test VMs.
+Submission:
+	• Screenshots of both gateways, connections, and successful ping between VMs.
+
+2: Site-to-Site VPN (S2S) Use two Azure sites
+
+Session 27 & 28
+
+What is Azure Load Balancer?
+	Azure Load Balancer is a fully managed load balancing service that distributes incoming network traffic across multiple resources (such as virtual machines) to ensure high availability, reliability, and scale.
+What are the two types of Azure Load Balancers, and how do they differ?
+	Azure offers two types of Load Balancers: Azure Standard Load Balancer and Azure Basic Load Balancer. The main difference is that Basic Load Balancer is designed for a single availability set, while Standard Load Balancer can be used with both availability sets and availability zones for higher availability.
+What are the key benefits of using Azure Load Balancer?
+	Azure Load Balancer provides high availability, fault tolerance, and improved performance for applications. It also offers distribution of incoming traffic, health monitoring, and support for various protocols.
+What is the difference between Azure Traffic Manager and Azure Load Balancer?
+	Azure Traffic Manager is a DNS-based traffic management service used for routing client requests to specific endpoints. Azure Load Balancer, on the other hand, distributes network traffic at the transport layer (Layer 4) among resources within a data center.
+How does Azure Load Balancer handle traffic distribution?
+	Azure Load Balancer uses a 5-tuple hash (source IP, source port, destination IP, destination port, and protocol) to distribute incoming traffic across healthy resources.
+What types of Load Balancers are available for virtual machines in Azure?
+	Azure offers two types of Load Balancers for virtual machines: Azure Internal Load Balancer (ILB) for private, internal load balancing, and Azure Public Load Balancer for public-facing applications.
+What is the difference between an Azure Load Balancer rule and a probe?
+	An Azure Load Balancer rule defines how traffic should be distributed, based on the 5-tuple hash. A probe, on the other hand, is used to check the health of resources and ensure traffic is only directed to healthy instances.
+How does Azure Load Balancer help in ensuring high availability for applications?
+	Azure Load Balancer can distribute traffic across multiple healthy virtual machines, ensuring that even if one virtual machine becomes unhealthy, traffic is redirected to the remaining healthy instances, minimizing downtime.
+Can Azure Load Balancer be used with both virtual machines and virtual networks?
+	Yes, Azure Load Balancer can be used to distribute traffic to both virtual machines and virtual networks, making it a versatile load balancing solution.
+What are the common protocols supported by Azure Load Balancer?
+	Azure Load Balancer supports common protocols such as HTTP, HTTPS, TCP, and UDP, making it suitable for a wide range of applications.
+
+
+• What is the purpose of a backend pool in Azure Load Balancer?
+• What is session persistence in Azure Load Balancer?
+• How does a Standard Load Balancer handle availability zone redundancy?
+• What scenarios require an Internal Load Balancer instead of a Public Load Balancer?
+• What metrics and logs are available for monitoring Azure Load Balancer?
+• What is Azure Application Gateway, and at which OSI layer does it operate?
+• What is the difference between Application Gateway and Load Balancer?
+• What is a Listener in Application Gateway?
+• What is the role of a Backend HTTP Settings configuration?
+• What are the differences between Basic, Multi-Site, and Path-based routing?
+• How does Application Gateway handle SSL/TLS termination?
+• What is Web Application Firewall (WAF) mode in Application Gateway?
+• What is autoscaling Application Gateway, and when should it be used?
+• What is Azure Front Door, and what layer does it operate on?
+• How does Azure Front Door differ from Application Gateway?
+• What routing methods are supported by Azure Front Door?
+• What is Azure Traffic Manager, and how does it route client traffic?
+• What are the different routing methods available in Traffic Manager?
+• Can Traffic Manager route traffic to non-Azure endpoints?
+
+
+Task#19:
+
+Azure Load Balancer (Test using RDP)
+	• Deploy a Public Azure Load Balancer in a new resource group and virtual network.
+	• Create backend servers using either an Availability Set or a Virtual Machine Scale Set (minimum 2 Windows VMs).
+	• Configure the Load Balancer with a Static Public IP.
+	• Create Health Probe for RDP:
+	• Verify access by connecting via RDP using:
+		○ <LBPublicIP>
+		○ <LBPublicIP>
+	• Submit screenshots demonstrating successful RDP access to both backend servers.
+
+Tags:
+• Name	Value
+Owner	Your Name
+Env	Test
+Created Date	dd/mm/yyyy
+OS	Windows
+Task#	19
+
+
+Task#20:
+
+Azure Application Gateway (Test using HTTP)
+	• Deploy an Application Gateway (Standard_v2) with a Public Frontend IP.
+	• Create two backend servers using either an Availability Set or a VM Scale Set (Windows or Linux).
+	• Configure each backend server with a unique HTTP page showing:
+		○ UTKLOUD (yourname) SERVER1
+		○ UTKLOUD (yourname) SERVER2
+	• Configure the Application Gateway with:
+		○ One HTTP Listener on port 80
+		○ One Backend Pool containing both servers
+		○ One Routing Rule pointing to the backend pool
+	• Test by accessing:
+		○ http://<AppGatewayPublicIP>
+	• Refresh multiple times to confirm round-robin responses between SERVER1 and SERVER2.
+Tags:
+• Name	Value
+Owner	Your Name
+Env	Test
+Created Date	dd/mm/yyyy
+OS	Windows
+Task#	20
+
+
+Session 29 & 30
+
+
+Task#21:
+
+Create a new Azure storage account named utkloudst<yourname> (example: utkloudstsuhail) / or any globally unique name similar to this.
+
+Make sure the storage account uses:
+	○ Azure Blob as the storage type
+	○ Standard performance
+	○ RA-GRS for redundancy
+	○ Cool access tier
+	○ TLS version 1.1
+	○ No secure transfer requirement
+	○ Anonymous access allowed at container level
+	○ Storage account key access enabled
+	○ All data-protection features turned off
+	○ Everything else stays default
+Inside this storage account, create a container that allows anonymous access.
+Upload a JPEG file into that container.
+Share the public link for the uploaded JPEG.
+
+Do not delete any of the created resources.
+
+Tags:
+• Name	Value
+Owner	Your Name
+Env	Test
+Created Date	dd/mm/yyyy
+Type	Storage Account
+Task#	21
+
+Session 31 & 32
+
+What all services available in storage account
+SAS vs Access key
+Storage Lifecycle Management
+What are Storage access tiers
+
+
+
+Task#22:
+
+Create a new Azure storage account named utkloudst<yourname> (example: utkloudstsuhail) / or any globally unique name similar to this.
+
+Make sure the storage account uses:
+	○ Azure Blob as the storage type
+	○ Standard performance
+	○ RA-GRS for redundancy
+	○ Cold access tier
+	○ TLS version 1.1
+	○ No secure transfer requirement
+	○ Anonymous access allowed at container level
+	○ Storage account key access enabled
+	○ Public access should be disabled --> add a private endpoint without DNS entry 
+	○ Data Protection - Enable soft delete for blobs, Containers, and Shares with 10 days retention period
+	○ Enable point-in-time restore for containers and any dependency service for it 
+	○ Everything else stays default
+Inside this storage account, create a container that allows anonymous access.
+Upload a JPEG file into that container.
+
+Share this storage account's SAS --> Allowed all services --> all permission except Permanent delete --> with expiry date of Jan, 01 2026 IST - allowed IP should be 223.233.82.38
+Allowed protocols should be http and htpps
+
+
+Also share storage account name and access key
+
+
+Do not delete any of the created resources.
+
+Tags:
+• Name	Value
+Owner	Your Name
+Env	Test
+Created Date	dd/mm/yyyy
+Type	Storage Account
+Task#	22
+
+
+Session 33-36
+
+• What is soft delete in Azure Backup, and why is it enabled by default?
+• What happens if a Recovery Services Vault is accidentally deleted?
+• What is the difference between locally redundant (LRS) and geo-redundant (GRS) backup storage?
+• Can backup data be moved between regions or subscriptions?
+
+
+• What is Azure Backup, and what workloads does it support?
+• What is a Recovery Services Vault (RSV), and why is it required for Azure Backup?
+• Can a single Recovery Services Vault be used to back up multiple virtual machines in the same region?
+• Can the same Recovery Services Vault be used for backup and Azure Site Recovery replication together for same region Machines?
+• What are the limitations of using one RSV across multiple regions?
+• What is a backup policy in Azure Backup?
+• Can different VMs share the same backup policy?
+• What is the difference between snapshot retention and vault retention?
+• Difference between Backup vault and Recovery Services Vault (RSV)
+
+• What restore options are available for Azure VM backup?
+• What is instant restore, and how does it work?
+• Can you restore a VM to a different region or subscription?
+• What is file-level recovery, and when is it used?
+• How does cross-region restore (CRR) work in Azure Backup?
+• What are the limitations of restoring encrypted virtual machines?
+
+• What is Azure Site Recovery, and how is it different from Azure Backup?
+• Can Azure Site Recovery replicate VMs within the same region?
+• Can the same Services Vault be used for both backup and Site Recovery?
+• What is the role of a replication policy in Azure Site Recovery?
+• What is RPO vs RTO?
+
+
+• What is the difference between test failover, planned failover, and unplanned failover?
+• What happens during a test failover in ASR?
+• How does failback work after a disaster is resolved?
+• What networking considerations are required during ASR failover?
+• Can ASR replicate VMs to a different subscription or tenant?
+• How does ASR handle disks and encryption during replication?
+• What is recovery plan in ASR?
+
+
+
+
+Dimension	Azure Backup	Azure Site Recovery (ASR)	Availability Zones
+Primary Purpose	Data protection and restore	Disaster recovery and business continuity	High availability within a region
+Problem It Solves	Data loss, corruption, accidental deletion	Datacenter / region failure, major outages	Hardware failure, zone-level outages
+Type	Backup service	Replication and failover service	Infrastructure resiliency feature
+Scope	Data-centric	Application / VM-centric	Infrastructure-centric
+RPO (Recovery Point Objective)	Hours (policy-based)	Minutes (near-continuous replication)	Near-zero (no data movement)
+RTO (Recovery Time Objective)	High (restore time required)	Low (failover in minutes)	Near-zero
+Downtime During Failure	Yes	Minimal	None
+Data Loss During Failure	Possible (depends on last backup)	Very minimal	None
+Replication	No continuous replication	Continuous replication	No replication
+Works Across Regions	Yes (restore, CRR)	Yes (primary → secondary region)	No (same region only)
+Works Within Same Region	Yes	Limited / specific scenarios	Yes
+Requires Failover	No	Yes (planned / unplanned)	No
+Automatic Failover	No	Manual / orchestrated	Yes (platform-managed)
+Use of Recovery Services Vault	Required	Required	Not required
+Typical Workloads	VM backup, SQL, SAP HANA, File Shares	Mission-critical VMs, apps	Web apps, APIs, stateless services
+Cost Model	Per protected instance + storage	Per protected instance + storage + churn	Infrastructure cost only
+Backup Retention	Days to years	Not designed for long-term retention	Not applicable
+Protection Against Ransomware	Yes (soft delete, immutability)	Limited	No
+Regulatory Compliance Use	Yes	Yes	No
+Example Scenario	Restore VM deleted by mistake	DR failover from East US to West US	App survives zone outage in East US
+
+
+
+Dimension	RPO (Recovery Point Objective)	RTO (Recovery Time Objective)
+Definition	Maximum acceptable data loss measured in time	Maximum acceptable downtime measured in time
+Focus	How much data you can afford to lose	How fast the service must be restored
+Time Reference	Looks backward from failure	Looks forward from failure
+Measured In	Minutes, hours	Minutes, hours
+Business Question	“How recent must the data be after recovery?”	“How quickly must the system be back online?”
+Impact Area	Data integrity	Service availability
+Example Statement	“We can lose up to 15 minutes of data”	“Service must be live within 30 minutes”
+Influenced By	Backup frequency, replication	Automation, failover process
+Typical Azure Services	Azure Backup, ASR replication	ASR, Availability Zones
+Backup Impact	Higher RPO (hours)	Higher RTO (restore time)
+ASR Impact	Low RPO (minutes)	Low RTO (minutes)
+Availability Zones Impact	Near-zero RPO	Near-zero RTO
+Cost Relationship	Lower RPO = higher cost	Lower RTO = higher cost
+Used In	DR planning, compliance	SLA, business continuity planning
+
+
+Task#23:
+
+1. Create a Recovery Services Vault
+
+Create a new Recovery Services Vault with the following details:
+	• Name: utkloud-rsv-<yourname> (example: utkloud-rsv-suhail)
+	• Region: Same region as the virtual machine (FROM POINT 2)
+	• Storage redundancy: GRS
+	• Soft Delete: Enabled
+	• Cross-Region Restore (CRR): Enabled
+	• Everything else should remain default
+
+2. Prepare the Virtual Machine
+Use any existing Azure VM or create a new one with the following constraints:
+	• Operating System: Windows or Linux
+	• VM must be:
+		○ Running
+		○ In the same region as the Recovery Services Vault
+	• Do not enable backup during VM creation
+
+3. Configure Azure VM Backup
+Enable backup for the VM using the Recovery Services Vault created above:
+	• Backup policy:
+		○ Name: utkloud-vm-backup-policy
+		○ Backup frequency: Daily
+		○ Backup time: Choose any (Suggestion- If you are working at 1pm IST then select backup time 2pm IST)
+		○ Retention:
+			§ Daily retention: 10 days
+	• Enable backup and ensure the initial backup job completes successfully
+
+4. Validate Backup Status
+Verify the following:
+
+	• VM appears under Backup Items
+	• Last backup status is Completed
+	• Backup health status shows Healthy
+
+5. Perform Restore Operations
+Perform both restore operations below:
+a. File-Level Restore
+	• Restore any single file from the VM
+	• Restore location:
+		○ Same VM
+		○ Alternate folder path
+b. Disk Restore
+	• Restore only the OS disk from a recovery point
+	• Do not create a new VM
+	• Verify the disk appears under Disks in the Azure portal
+
+6. Test Soft Delete Protection
+	• Attempt to stop backup and delete backup data for the VM
+	• Observe the Soft Deleted state
+	• Do not permanently delete the backup item
+
+7. Monitoring and Validation
+	• Review:
+		○ Backup jobs
+		○ Restore jobs
+		○ Alerts (if any)
+	• Take note of:
+		○ Backup duration
+		○ Restore duration
+
+8. Security and Governance Checks
+Verify the following:
+	○ Soft Delete is enabled on the vault
+	○ Backup data cannot be permanently deleted without disabling Soft Delete
+	○ Backup is protected by vault-level security settings
+
+
+
+Tags:
+• Name	Value
+Owner	Your Name
+Env	Test
+Created Date	dd/mm/yyyy
+Type	Backup and Restore
+Task#	23
+
